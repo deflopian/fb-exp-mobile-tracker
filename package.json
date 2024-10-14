@@ -1,7 +1,7 @@
 {
   "name": "mobile-tracker",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Facebook Mobile Tracker (experimental): login with mobile device emulation",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
