@@ -33,10 +33,6 @@ const ID = {
   });
   const page = await browser.newPage();
   await page.emulate(iPhone);
-
-  const client = await page.target().createCDPSession();
-  await client.send("Network.enable");  // Must enable network.
-  await client.send("Network.setBypassServiceWorker", { bypass: true });
   await page.setRequestInterception(true);
 
   page.on('request', (request) => {
@@ -107,12 +103,9 @@ const ID = {
     console.log(ID.login);
     await page.type(ID.login, CRED.user);
     await page.type(ID.pass, CRED.pass);
-    // await page.keyboard.press('Enter');
     await sleep(500);
     await page.keyboard.press('Enter');
     await sleep(500);
-
-    // await page.click("#loginbutton")
 
     console.log("login done");
     await page.waitForNavigation();
