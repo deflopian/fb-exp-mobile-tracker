@@ -84,7 +84,6 @@ const ID = {
     }
 
     try {
-      // Попытка получить тело ответа (если это JSON)
       const data = await response.json();
       console.log(`Ответ от ${url} со статусом ${status}:`, data);
     } catch (error) {
@@ -93,14 +92,11 @@ const ID = {
   });
 
   let login = async () => {
-    // login
     await page.goto('https://m.facebook.com', {
       waitUntil: 'networkidle2'
     });
     console.log('waiting for login');
     await page.waitForSelector(ID.login);
-    console.log(CRED.user);
-    console.log(ID.login);
     await page.type(ID.login, CRED.user);
     await page.type(ID.pass, CRED.pass);
     await sleep(500);
@@ -122,5 +118,5 @@ const ID = {
   await sleep(500);
   await page.screenshot({ path: 'screenshot.png' });
   await sleep(60000);
-  // await browser.close();
+  await browser.close();
 })();
